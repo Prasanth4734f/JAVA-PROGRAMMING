@@ -1,0 +1,14 @@
+import java.util.Scanner;
+class Valid {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        String S1 = input.nextLine();
+        String S2 = input.nextLine();
+        if (S1==S2) {
+            System.out.println("Username is Valid");
+        } else {
+            System.out.println("Username is Invalid");
+        }
+        input.close();
+    }
+}
