@@ -1,0 +1,67 @@
+class Shape {
+    double area() {
+        return 0;
+    }
+
+    double perimeter() {
+        return 0;
+    }
+}
+
+class Rectangle extends Shape {
+    double length;
+    double width;
+
+    Rectangle(double length, double width) {
+        this.length = length;
+        this.width = width;
+    }
+
+    @Override
+    double area() {
+        return length * width;
+    }
+
+    @Override
+    double perimeter() {
+        return 2 * (length + width);
+    }
+}
+
+class Triangle extends Shape {
+    double base;
+    double height;
+    double side1;
+    double side2;
+    double side3;
+
+    Triangle(double base, double height, double side1, double side2, double side3) {
+        this.base = base;
+        this.height = height;
+        this.side1 = side1;
+        this.side2 = side2;
+        this.side3 = side3;
+    }
+
+    @Override
+    double area() {
+        return 0.5 * base * height;
+    }
+
+    @Override
+    double perimeter() {
+        return side1 + side2 + side3;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape rectangle = new Rectangle(5, 3);
+        System.out.println("Rectangle area: " + rectangle.area());
+        System.out.println("Rectangle perimeter: " + rectangle.perimeter());
+
+        Shape triangle = new Triangle(4, 6, 5, 5, 6);
+        System.out.println("Triangle area: " + triangle.area());
+        System.out.println("Triangle perimeter: " + triangle.perimeter());
+    }
+}
