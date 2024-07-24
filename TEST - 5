@@ -1,0 +1,78 @@
+import java.util.HashMap;
+import java.util.Map;
+
+public class StudentAttendanceSystem {
+    private Map<Integer, Map<String, Boolean>> attendanceRecords;
+    public StudentAttendanceSystem() {
+        attendanceRecords = new HashMap<>();
+    }
+    public void markAttendance(int studentId, String date, boolean isPresent) {
+        if (!attendanceRecords.containsKey(studentId)) {
+            attendanceRecords.put(studentId, new HashMap<>());
+        }
+        attendanceRecords.get(studentId).put(date, isPresent);
+    }
+    public void generateAttendanceReport(int studentId) {
+        if (attendanceRecords.containsKey(studentId)) {
+            System.out.println("Attendance Report for Student ID: " + studentId);
+            for (Map.Entry<String, Boolean> entry : attendanceRecords.get(studentId).entrySet()) {
+                System.out.println(entry.getKey() + ": " + (entry.getValue() ? "Present" : "Absent"));
+            }
+        } else {
+            System.out.println("No attendance records found for Student ID: " + studentId);
+        }
+    }
+    public double calculateAttendancePercentage(int studentId) {
+        if (attendanceRecords.containsKey(studentId)) {
+            int totalDays = attendanceRecords.get(studentId).size();
+            int presentDays = 0;
+            for (Boolean isPresent : attendanceRecords.get(studentId).values()) {
+                if (isPresent) {
+                    presentDays++;
+                }
+            }
+            return ((double) presentDays / totalDays) * 100;
+        } else {
+            return 0.0;
+        }
+    }
+    public static void main(String[] args) {
+        StudentAttendanceSystem system = new StudentAttendanceSystem();
+        system.markAttendance(1, "2024-07-24", true);
+        system.markAttendance(1, "2024-07-25", false);
+        system.markAttendance(1, "2024-07-26", true);
+        system.generateAttendanceReport(1);
+        double attendancePercentage = system.calculateAttendancePercentage(1);
+        System.out.println("Attendance Percentage: " + attendancePercentage + "%");
+    }
+}
+
+..............................................................................................................................................................................
+2. public class WeatherForecastApp {
+
+    public String getCurrentWeather(String location) {
+        return "Current weather for " + location;
+    }
+
+    public String getWeeklyForecast(String location) {
+        return "Weekly forecast for " + location;
+    }
+
+    public void displayWeatherDetails(String location) {
+        System.out.println("Weather details for " + location);
+    }
+
+    public static void main(String[] args) {
+        WeatherForecastApp app = new WeatherForecastApp();
+
+        String location = "New York";
+
+        String currentWeather = app.getCurrentWeather(location);
+        System.out.println(currentWeather);
+
+        String weeklyForecast = app.getWeeklyForecast(location);
+        System.out.println(weeklyForecast);
+
+        app.displayWeatherDetails(location);
+    }
+}
