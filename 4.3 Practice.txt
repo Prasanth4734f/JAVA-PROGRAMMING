@@ -1,0 +1,94 @@
+1. Write a program that will take in the base and height of a triangle and calculate and display the area of the triangle using the
+formula below.
+A = 1/2 bh
+
+ans:
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the base of the triangle: ");
+        double base = input.nextDouble();
+
+        System.out.print("Enter the height of the triangle: ");
+        double height = input.nextDouble();
+
+        double area = 0.5 * base * height;
+
+        System.out.println("The area of the triangle is: " + area);
+
+        input.close();
+    }
+}
+...........................................................................
+
+2. Write the following math formulas in Java. You will need to use methods from the Math class as well as nesting of methods
+and parentheses to force the order of operations to correctly calculate the answer. Assume that all the variables in the
+formulas have already been declared and initialized.
+(a) a=(x^5-6)^0.5/4
+ans: double a = Math.sqrt(Math.pow(x, 5) - 6) / 4;
+
+(b) b=x^y-6^x
+ans: double result = Math.pow(x, y) - Math.pow(6, x);
+
+
+(c) c = 4cos(z/5) - sin(x^2)
+Ans : double c = 4 * Math.cos(z / 5) - Math.sin(Math.pow(x, 2));
+
+
+(d) d = x^4-(6x-y^3)**0.5
+Ans: double d = Math.pow(x, 4) - Math.sqrt(6 * x - Math.pow(y, 3));
+
+
+(e) e = 1/(y-(1/x-2**y))
+ Ans:  double e = 1 / (y - (1 / x - Math.pow(2, y)));
+...........................................................................(3) A bus holds 45 people. The school will only use a bus if they can fill it completely. The rest of the people will ride in vans.
+Write a program that will take in the number of people that are signed up to go on a field trip. Have the program print the
+number of busses necessary and then total number of people that will need to ride in vans.
+Ans: 
+
+public class BusVanAllocation {
+    public static void main(String[] args) {
+        int totalPeople = 87; // Example: Total number of people signed up for the field trip
+        int busCapacity = 45;
+        
+        int busesNeeded = totalPeople / busCapacity;
+        int remainingPeople = totalPeople % busCapacity;
+        
+        System.out.println("Buses needed: " + busesNeeded);
+        System.out.println("People riding in vans: " + remainingPeople);
+    }
+}
+...........................................................................
+(4) Write true or false on the blanks in the program below to show the value of the boolean variable true_false as the program
+executes.
+true_false = (j < 5);
+true_false = (j > 3); 
+true_false = (j < i); 
+true_false = (i < 5); 
+true_false = (j <= 5); 
+true_false = (6 < 6); 
+true_false = (i != j); 
+true_false = (i == j || i < 50); 
+true_false = (i == j && i < 50); 
+true_false = (i > j || true_false && j >= 4); 
+true_false = (!(i < 2 && j == 5)); 
+true_false = !true_false; 
+...........................................................................
+
+(5)  Explain why each of the declarations in the second list are wrong.
+Ans:    int x = 10.5;
+	char c = "a";
+	boolean b = "true";
+	double d = '2.0';
+
+...........................................................................
+
+(6)  Explain why each of the declarations in the second list do not follow conventions for variable names.
+Ans: int 1stNumber;
+	String my favorite color;
+	double $alary;
+	boolean is_this_correct?;
