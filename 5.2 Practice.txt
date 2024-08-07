@@ -1,0 +1,123 @@
+Consider you are asked to decode a secret message. The coded message is in numbers and each number stands for a
+specific letter. You discover enough of the secret code to decode the current message. So far, you know:
+• 1 represents “D”
+• 2 represents “W”
+• 3 represents “E”
+• 4 represents “L”
+• 5 represents “H”
+• 6 represents “O”
+• 7 represents “R”
+Write a program that prompts the user for 10 numbers, one at a time, and prints out the decoded message. If the user enters a
+number that is not one of those already deciphered, prompt him/her for a new number.
+Test your code with the following input: 5 3 4 4 6 2 6 7 4 1
+Ans:
+   import java.util.Scanner;
+
+public class SecretMessageDecoder {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String secretCode = "DWELHOR";
+        String decodedMessage = "";
+
+        System.out.println("Enter 10 numbers to decode the secret message:");
+        for (int i = 0; i < 10; i++) {
+            int number = scanner.nextInt();
+            char letter = decodeLetter(number);
+            if (letter != ' ') {
+                decodedMessage += letter;
+            } else {
+                System.out.println("Invalid number entered. Please try again.");
+                i--;
+            }
+        }
+
+        System.out.println("Decoded Message: " + decodedMessage);
+    }
+
+    public static char decodeLetter(int number) {
+        switch (number) {
+            case 1:
+                return 'D';
+            case 2:
+                return 'W';
+            case 3:
+                return 'E';
+            case 4:
+                return 'L';
+            case 5:
+                return 'H';
+            case 6:
+                return 'O';
+            case 7:
+                return 'R';
+            default:
+                return ' ';
+        }
+    }
+}
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+(2) Suppose you are implementing a search routine that searches through a String, character by character, until it finds a space
+character. As soon as you find the first space character, you decide that you do not want to continue searching the string. If
+you are using a WHILE loop and your loop will continue to execute until you have gone through the entire string, should you
+use the keyword break or continue when you find the first space character? Why? Why would you not use the other keyword?
+Ans: 
+String text = "Hello World";
+int i = 0;
+while (i < text.length()) {
+    if (text.charAt(i) == ' ') {
+        break;
+    }
+    i++;
+}
+System.out.println("Found space at index: " + i);
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+(3) Imagine you are writing a program that prints out the day of the week (Sunday, Monday, Tuesday, etc.) for each day of the
+year. Before the program executes, can you tell how many times the loop will execute? Assume the year is not a Leap year.
+Given your answer, which type of loop would you need to implement? Explain your reasoning.
+
+Ans:  public class DayOfWeekPrinter {
+    public static void main(String[] args) {
+        String[] daysOfWeek = {"Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"};
+        int daysInYear = 365;
+
+        for (int day = 1; day <= daysInYear; day++) {
+            int dayOfWeekIndex = (day - 1) % 7;
+            System.out.println("Day " + day + ": " + daysOfWeek[dayOfWeekIndex]);
+        }
+    }
+}
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+(4) An anagram is a word or a phrase made by transposing the letters of another word or phrase; for example, "parliament" is an
+anagram of "partial men," and "software" is an anagram of "swear oft." Write a program that figures out whether one string is
+an anagram of another string. The program should ignore white space and punctuation.
+Ans: 
+import java.util.Arrays;
+
+public class AnagramChecker {
+    public static boolean checkIfAnagram(String str1, String str2) {
+        String s1 = str1.replaceAll("[\\s\\p{Punct}]", "").toLowerCase();
+        String s2 = str2.replaceAll("[\\s\\p{Punct}]", "").toLowerCase();
+
+        char[] charArray1 = s1.toCharArray();
+        char[] charArray2 = s2.toCharArray();
+
+        Arrays.sort(charArray1);
+        Arrays.sort(charArray2);
+
+        return Arrays.equals(charArray1, charArray2);
+    }
+
+    public static void main(String[] args) {
+        String word1 = "parliament";
+        String word2 = "partial men";
+
+        if (checkIfAnagram(word1, word2)) {
+            System.out.println(word1 + " and " + word2 + " are anagrams.");
+        } else {
+            System.out.println(word1 + " and " + word2 + " are not anagrams.");
+        }
+    }
+}

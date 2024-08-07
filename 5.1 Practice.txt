@@ -1,0 +1,246 @@
+(1) Using a ternary operator, write an if/else statement that will return true or false if the variable x is less than or equal to 7.
+Ans: boolean result = (x <= 7) ? true : false;
+............................................................................................................................................
+
+(2) Write a program that prompts the user to enter two floating point (double) numbers and an operator ( *, +, /, %, -). Print the
+results of the given operation. For reading the command line, use the Scanner class. Write the program first using switch
+logic, then re-write the program using if/else logic.
+Ans: import java.util.Scanner;
+
+public class Calculator {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter first number: ");
+        double num1 = scanner.nextDouble();
+
+        System.out.print("Enter operator (+, -, *, /, %): ");
+        char operator = scanner.next().charAt(0);
+
+        System.out.print("Enter second number: ");
+        double num2 = scanner.nextDouble();
+
+        switch (operator) {
+            case '+':
+                System.out.println("Result: " + (num1 + num2));
+                break;
+            case '-':
+                System.out.println("Result: " + (num1 - num2));
+                break;
+            case '*':
+                System.out.println("Result: " + (num1 * num2));
+                break;
+            case '/':
+                System.out.println("Result: " + (num1 / num2));
+                break;
+            case '%':
+                System.out.println("Result: " + (num1 % num2));
+                break;
+            default:
+                System.out.println("Invalid operator!");
+        }
+
+        // Re-writing using if/else logic
+        if (operator == '+') {
+            System.out.println("Result: " + (num1 + num2));
+        } else if (operator == '-') {
+            System.out.println("Result: " + (num1 - num2));
+        } else if (operator == '*') {
+            System.out.println("Result: " + (num1 * num2));
+        } else if (operator == '/') {
+            System.out.println("Result: " + (num1 / num2));
+        } else if (operator == '%') {
+            System.out.println("Result: " + (num1 % num2));
+        } else {
+            System.out.println("Invalid operator!");
+        }
+
+        scanner.close();
+    }
+}
+...........................................................................................................
+
+
+(3) True or False: IF/ELSE statements can always be replaced with SWITCH statements
+Ans: // IF/ELSE statement
+if (condition) {
+    // code block
+} else {
+    // code block
+}
+
+.............................................................................................................
+
+
+(4) Write a Java program to do the following that determines your weight on another planet. The program should ask for the
+user's weight on Earth, then present a menu of the other planets in our solar system. The user should choose one of the
+planets from the menu. The program should display the phrase like the following: “Your weight on Mars is 55 lbs.” Use the
+following conversion factors:
+Planet Conversion factor (multiply your Earth weight by this
+number to determine your weight on this planet)
+Mercury 0.38
+Venus 0.91
+Mars. 0.38
+Jupiter 2.36
+Saturn 0.92
+Uranus 0.89
+Neptune 1.13
+
+Ans:  import java.util.Scanner;
+
+public class WeightOnAnotherPlanet {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+        
+        System.out.print("Enter your weight on Earth (in lbs): ");
+        double weightOnEarth = input.nextDouble();
+        
+        System.out.println("Choose a planet from the menu:");
+        System.out.println("1. Mercury");
+        System.out.println("2. Venus");
+        System.out.println("3. Mars");
+        System.out.println("4. Jupiter");
+        System.out.println("5. Saturn");
+        System.out.println("6. Uranus");
+        System.out.println("7. Neptune");
+        
+        System.out.print("Enter the number of the planet: ");
+        int planetChoice = input.nextInt();
+        
+        double weightOnAnotherPlanet = 0.0;
+        
+        switch (planetChoice) {
+            case 1:
+                weightOnAnotherPlanet = weightOnEarth * 0.38;
+                System.out.println("Your weight on Mercury is " + weightOnAnotherPlanet + " lbs.");
+                break;
+            case 2:
+                weightOnAnotherPlanet = weightOnEarth * 0.91;
+                System.out.println("Your weight on Venus is " + weightOnAnotherPlanet + " lbs.");
+                break;
+            case 3:
+                weightOnAnotherPlanet = weightOnEarth * 0.38;
+                System.out.println("Your weight on Mars is " + weightOnAnotherPlanet + " lbs.");
+                break;
+            case 4:
+                weightOnAnotherPlanet = weightOnEarth * 2.36;
+                System.out.println("Your weight on Jupiter is " + weightOnAnotherPlanet + " lbs.");
+                break;
+            case 5:
+                weightOnAnotherPlanet = weightOnEarth * 0.92;
+                System.out.println("Your weight on Saturn is " + weightOnAnotherPlanet + " lbs.");
+                break;
+            case 6:
+                weightOnAnotherPlanet = weightOnEarth * 0.89;
+                System.out.println("Your weight on Uranus is " + weightOnAnotherPlanet + " lbs.");
+                break;
+            case 7:
+                weightOnAnotherPlanet = weightOnEarth * 1.13;
+                System.out.println("Your weight on Neptune is " + weightOnAnotherPlanet + " lbs.");
+                break;
+            default:
+                System.out.println("Invalid choice. Please select a valid planet.");
+        }
+        
+        input.close();
+    }
+}
+.....................................................................................................................................................
+
+(5)  Write a Java program that will decide if a student gets into Mountville University. Students must have one of the following
+criteria:
+• been a valedictorian or salutatorian of a school of 1400 or more
+• had a gpa of 4.0 or better and a SAT score of 1100 or more
+• had a gpa of 3.5 or better and an SAT score of 1300 or more
+• had a gpa of 3.0 or better and an SAT score of 1500 or more
+Ans: public class MountvilleUniversityAdmission {
+    public static void main(String[] args) {
+        boolean isValedictorian = true;
+        boolean isSalutatorian = false;
+        double gpa = 4.0;
+        int satScore = 1100;
+
+        if ((isValedictorian || isSalutatorian) && (gpa >= 4.0 && satScore >= 1100)) {
+            System.out.println("Congratulations! You are admitted to Mountville University.");
+        } else if ((gpa >= 3.5 && satScore >= 1300) || (gpa >= 3.0 && satScore >= 1500)) {
+            System.out.println("Congratulations! You are admitted to Mountville University.");
+        } else {
+            System.out.println("Sorry, you do not meet the admission criteria for Mountville University.");
+        }
+    }
+}
+....................................................................................................................................................
+
+(6) A professor in college will allow a student to be excused from the final exam if either of the following is true:
+• They have a 90% average or higher in the class and have missed 3 or less class lectures.
+• They have a 80% average or higher in the class and have not missed any class lectures.
+• The program below will determine whether a student can get out of the exam or not.
+• Rewrite the program so only one if statement is used
+
+import java.util.Scanner;
+
+public class FinalExam {
+    public static void main(String[] args) {
+        double average;
+        int daysAbsent;
+        boolean exempt = false;
+        Scanner reader = new Scanner(System.in);
+
+        System.out.println("This program will determine if you can get out of the final exam.");
+        System.out.println("Please answer the following questions.");
+
+        System.out.println("What is your average in the class?");
+        average = reader.nextDouble();
+
+        System.out.println("How many class lectures have you missed?");
+        daysAbsent = reader.nextInt();
+
+        if ((average >= 90 && daysAbsent <= 3) || (average >= 80 && daysAbsent == 0)) {
+            exempt = true;
+        }
+
+        if (exempt) {
+            System.out.println("Congratulations! You are exempt from the final exam.");
+        } else {
+            System.out.println("You are not exempt from the final exam.");
+        }
+    }
+}
+.....................................................................................................................................................
+
+(7)  Write a program that calculates the number of buckets of paint to use for a room and the optimal number of cans to purchase.
+You need to ask the height of the room and the length and width of the room. The room is rectangular. You must paint the
+walls and the ceiling but not the floor. There are no windows or skylights. You can purchase the following size buckets of
+paint.
+• 5-liter bucket costs $15 each and covers 1500 square feet.
+• 1-liter bucket costs $4 and covers 300 square feet
+Ans:  import java.util.Scanner;
+
+public class PaintCalculator {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Enter the height of the room: ");
+        double height = input.nextDouble();
+
+        System.out.print("Enter the length of the room: ");
+        double length = input.nextDouble();
+
+        System.out.print("Enter the width of the room: ");
+        double width = input.nextDouble();
+
+        double totalArea = 2 * height * (length + width);
+        double totalPaintNeeded = totalArea / 300; // 1 liter covers 300 sq ft
+
+        int buckets5L = (int) Math.ceil(totalPaintNeeded / 5);
+        int buckets1L = (int) Math.ceil((totalPaintNeeded % 5) / 1);
+
+        double totalCost = buckets5L * 15 + buckets1L * 4;
+
+        System.out.println("Total number of 5-liter buckets needed: " + buckets5L);
+        System.out.println("Total number of 1-liter cans needed: " + buckets1L);
+        System.out.println("Total cost of paint: $" + totalCost);
+
+        input.close();
+    }
+}
